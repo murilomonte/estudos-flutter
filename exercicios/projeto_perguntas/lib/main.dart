@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import './questao.dart';
+import './resposta.dart';
 
 void main() {
   // Roda uma instância da classe 'PerguntasApp'
@@ -19,7 +20,6 @@ class _PerguntaAppState extends State<PerguntaApp> {
     setState(() {
       _perguntaSelecionada++;
     });
-    print(_perguntaSelecionada);
   }
 
   // Como a interface irá mudar conforme o estado, ela deve estar dentro dessa classe;
@@ -46,12 +46,9 @@ class _PerguntaAppState extends State<PerguntaApp> {
                 Questao(perguntas[_perguntaSelecionada]),
                 // ElevatedButton -> widget que gera um botão
                 // Não pode ser const pois o botão vai mudar.
-                ElevatedButton(
-                    onPressed: _responder, child: const Text('Resposta 1')),
-                ElevatedButton(
-                    onPressed: _responder, child: const Text('Resposta 2')),
-                ElevatedButton(
-                    onPressed: _responder, child: const Text('Resposta 2')),
+                Resposta('Resposta 1', _responder),
+                Resposta('Resposta 2', _responder),
+                Resposta('Resposta 3', _responder),
               ],
             )));
   }
