@@ -40,21 +40,19 @@ class _PerguntaAppState extends State<PerguntaApp> {
             appBar: AppBar(
               title: const Text('Perguntas'),
             ),
-            body: Center(
-              child: Column(
-                children: [
-                  // Não pode ser um widget const pois a pergunta pode mudar.
-                  Text(perguntas[_perguntaSelecionada]),
-                  // ElevatedButton -> widget que gera um botão
-                  // Não pode ser const pois o botão vai mudar.
-                  ElevatedButton(
-                      onPressed: _responder, child: const Text('Resposta 1')),
-                  ElevatedButton(
-                      onPressed: _responder, child: const Text('Resposta 2')),
-                  ElevatedButton(
-                      onPressed: _responder, child: const Text('Resposta 2')),
-                ],
-              ),
+            body: Column(
+              children: [
+                // Não pode ser um widget const pois a pergunta pode mudar.
+                Questao(perguntas[_perguntaSelecionada]),
+                // ElevatedButton -> widget que gera um botão
+                // Não pode ser const pois o botão vai mudar.
+                ElevatedButton(
+                    onPressed: _responder, child: const Text('Resposta 1')),
+                ElevatedButton(
+                    onPressed: _responder, child: const Text('Resposta 2')),
+                ElevatedButton(
+                    onPressed: _responder, child: const Text('Resposta 2')),
+              ],
             )));
   }
 }
