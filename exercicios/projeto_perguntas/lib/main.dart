@@ -29,9 +29,20 @@ class _PerguntaAppState extends State<PerguntaApp> {
   // O método recebe como parâmetro um objeto 'BuildContext', que representa o endereço do widget na árvore de widgets.
   // Permite acessar informações do ambiente, como tema, localização ou dimensões, por meio da variável 'context';
   Widget build(BuildContext context) {
-    final List<String> perguntas = [
-      'Qual é a sua cor favorita?',
-      'Qual é o seu animal favorito?',
+    // Uma lista de Map, onde cada chave é do tipo String e seu respectivo valor é um Object
+    final List<Map<String, Object>> perguntas = [
+      {
+        'texto': 'Qual é a sua cor favorita?',
+        'respostas': ['Preto', 'Vermelho', 'Verde', 'Branco']
+      },
+      {
+        'texto': 'Qual é o seu animal favorito?',
+        'respostas': ['Coelho', 'Cobra', 'Elefante', 'Leão']
+      },
+      {
+        'texto': 'Qual é o seu instrutor favorito?',
+        'respostas': ['Maria', 'João', 'Leo', 'Pedro']
+      },
     ];
     // Retorna um widget que implementa o material design, oferencendo funcionalidades como: temas, gerenciamento de rotas, e mais.
     return MaterialApp(
@@ -43,7 +54,8 @@ class _PerguntaAppState extends State<PerguntaApp> {
             body: Column(
               children: [
                 // Não pode ser um widget const pois a pergunta pode mudar.
-                Questao(perguntas[_perguntaSelecionada]),
+                // O valor da chave 'texto' é foi definido como Object. Para mudar isso, deve-se fazer um cast dizendo ao dart que o valor obtido é uma String. Com 'as String'
+                Questao(perguntas[_perguntaSelecionada]['texto'] as String),
                 // ElevatedButton -> widget que gera um botão
                 // Não pode ser const pois o botão vai mudar.
                 Resposta('Resposta 1', _responder),
