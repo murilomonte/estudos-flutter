@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
+import 'package:minimal_music_app/model/playlist_provider.dart';
 // import 'package:flutter/services.dart';
 import 'package:minimal_music_app/theme/theme_provider.dart';
 import 'package:provider/provider.dart';
@@ -6,19 +8,21 @@ import 'package:provider/provider.dart';
 import 'pages/home_page.dart';
 
 void main() {
-  // WidgetsFlutterBinding.ensureInitialized();
-  // // make navigation bar transparent
-  // SystemChrome.setSystemUIOverlayStyle(
-  //   const SystemUiOverlayStyle(
-  //     systemNavigationBarColor: Colors.transparent,
-  //   ),
-  // );
-  // // make flutter draw behind navigation bar
-  // SystemChrome.setEnabledSystemUIMode(SystemUiMode.edgeToEdge);
-  
+  WidgetsFlutterBinding.ensureInitialized();
+  // make navigation bar transparent
+  SystemChrome.setSystemUIOverlayStyle(
+    const SystemUiOverlayStyle(systemNavigationBarColor: Colors.transparent),
+  );
+  // make flutter draw behind navigation bar
+  SystemChrome.setEnabledSystemUIMode(SystemUiMode.edgeToEdge);
+
   runApp(
-    ChangeNotifierProvider(
-      create: (context) => ThemeProvider(),
+    // Transmite a informação alterada por ThemeProvider pela árvore de widgets
+    MultiProvider(
+      providers: [
+        ChangeNotifierProvider(create: (context) => ThemeProvider()),
+        ChangeNotifierProvider(create: (context) => PlaylistProvider()),
+      ],
       child: MyApp(),
     ),
   );
