@@ -7,6 +7,8 @@ import 'package:provider/provider.dart';
 import 'pages/home_page.dart';
 
 void main() {
+  // talvez precise alterar a versão do ndk em android/build.gradle.kts para funcionar
+
   WidgetsFlutterBinding.ensureInitialized();
   // make navigation bar transparent
   SystemChrome.setSystemUIOverlayStyle(
